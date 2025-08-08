@@ -3,6 +3,8 @@ const { Client, Events, GatewayIntentBits, SlashCommandBuilder, Embed, EmbedBuil
 const fs = require('node:fs');
 const path = require('node:path')
 const config = require('./config.json');
+const token = process.env.DISCORD_TOKEN;
+require('dotenv').config();
 
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] | [GatewayIntentBits.GuildMembers] | [GatewayIntentBits.MessageContent] | [GatewayIntentBits.GuildMessages]});
