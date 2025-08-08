@@ -1,0 +1,14 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "description": "An example application - make sure to configure this yourself.",
+  "main": "index.js",
+  "author": "Pebblehost",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
+  },
+  "nodeVersion": "16.17.0"
+}
