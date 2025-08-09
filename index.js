@@ -29,5 +29,7 @@ client.on('ready', () => {
 
 client.login(token);
 
-app.get('/', (req, res) => res.send('Bot läuft!'));
+
 app.listen(PORT, () => console.log(`Webserver läuft auf Port ${PORT}`));
+app.get("/", (req, res) => res.send("Bot läuft!"));
+app.listen(3000, () => console.log("Keep-alive Server gestartet"));
