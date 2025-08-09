@@ -5,7 +5,7 @@ module.exports = {
     once: true,
     async execute(client) {
         console.log(`Logged in as ${client.user.tag}`);
-        client.user.setActivity("Made by 2087", {
+        client.user.setActivity("HOH IST LNV ENDGEGNER", {
             type: ActivityType.Custom,
         })
     }
