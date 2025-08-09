@@ -5,7 +5,8 @@ module.exports = {
     once: true,
     async execute(client) {
         console.log(`Logged in as ${client.user.tag}`);
-    client.user.setActivity('HOH IST ENDGEGNER VON LNV', { type: Discord.ActivityType.Competing });
-
+        client.user.setActivity("Made by 2087", {
+            type: ActivityType.Competing,
+        })
     }
 }
