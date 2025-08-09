@@ -5,8 +5,8 @@ module.exports = {
     once: true,
     async execute(client) {
         console.log(`Logged in as ${client.user.tag}`);
-        client.user.setActivity("Made by 2087", {
-            type: ActivityType.Competing,
-        })
+        client.user.setActivity("HOH ENDGEGNER VON LNV", {
+            type: ActivityType.Streaming,
+        });
     }
-}
+};
