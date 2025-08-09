@@ -1,8 +1,8 @@
 const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
 
 // IDs der Rollen, die Giveaways starten bzw. auslosen dürfen
-const GIVEAWAY_START_ROLE = '1302213819162165299'; // z.B. '123456789012345678'
-const GIVEAWAY_DRAW_ROLE = '1302213819162165299'; // z.B. '987654321098765432'
+const GIVEAWAY_START_ROLE = '1403092076769443988'; // z.B. '123456789012345678'
+const GIVEAWAY_DRAW_ROLE = '1403092076769443988'; // z.B. '987654321098765432'
 
 module.exports = {
     data: new SlashCommandBuilder()

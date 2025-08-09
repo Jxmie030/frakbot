@@ -11,7 +11,6 @@ const { MITGLIEDERLISTECHANNELID } = require('../config.json');
 const { MITGLIEDERLISTETEXT } = require('../config.json'); 
 const { L9_ROLE_ID_MITGLIEDERLISTE } = require('../config.json');
 
-
 module.exports = {
     name: Events.ClientReady,
     once: true,
@@ -37,6 +36,12 @@ module.exports = {
 
         let sentMessage;
 
+        // Hilfsfunktion: Hole die letzte Bot-Nachricht im Channel
+        async function fetchLastBotMessage(channel, clientUserId) {
+            const messages = await channel.messages.fetch({ limit: 10 });
+            return messages.find(msg => msg.author.id === clientUserId);
+        }
+
         const updateTeamList = async () => {
             const embed = new EmbedBuilder()
                 .setTitle(MITGLIEDERLISTETEXT)
@@ -51,10 +56,15 @@ module.exports = {
                 embed.addFields({ name: `🔹 ${roleData.name}`, value: members, inline: false });
             }
 
+            // Hole die letzte Bot-Nachricht, falls noch keine gespeichert ist
             if (!sentMessage) {
-                sentMessage = await channel.send({ embeds: [embed] });
-            } else {
+                sentMessage = await fetchLastBotMessage(channel, client.user.id);
+            }
+
+            if (sentMessage) {
                 await sentMessage.edit({ embeds: [embed] });
+            } else {
+                sentMessage = await channel.send({ embeds: [embed] });
             }
         };
 

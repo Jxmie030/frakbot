@@ -1,8 +1,8 @@
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const fs = require('node:fs');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
 client.commands = getCommands('./commands');
+const abmeldungCommand = require('../commands/abmeldung.js');
 
 module.exports = {
     name: 'interactionCreate',
@@ -19,13 +19,17 @@ module.exports = {
             return;
         }
 
-        // Ticket Kategorie Dropdown & Ticket-Erstellung
-        const ticketCommand = require('../commands/ticket.js');
-        if (typeof ticketCommand.handleComponent === 'function') {
-            await ticketCommand.handleComponent(interaction);
+        // Abmeldung Button/Modal
+if (interaction.isButton() || interaction.isModalSubmit()) {
+        // Hole das passende Command-Objekt
+        const command = client.commands.get('abmeldung');
+        if (command && command.handleInteraction) {
+            await command.handleInteraction(interaction);
         }
     }
+    }
 };
+
 
 function getCommands(dir) {
     let commands = new Collection();

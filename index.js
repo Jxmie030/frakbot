@@ -1,11 +1,12 @@
-const { token } = require('./config.json');
 const { Client, Events, GatewayIntentBits, SlashCommandBuilder, Embed, EmbedBuilder, Collection, Role, RoleFlags, ActivityType } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path')
 const config = require('./config.json');
 const token = process.env.DISCORD_TOKEN;
 require('dotenv').config();
-
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] | [GatewayIntentBits.GuildMembers] | [GatewayIntentBits.MessageContent] | [GatewayIntentBits.GuildMessages]});
 
@@ -27,3 +28,6 @@ client.on('ready', () => {
 })
 
 client.login(token);
+
+app.get('/', (req, res) => res.send('Bot läuft!'));
+app.listen(PORT, () => console.log(`Webserver läuft auf Port ${PORT}`));
