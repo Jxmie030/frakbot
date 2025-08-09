@@ -6,7 +6,7 @@ module.exports = {
     async execute(client) {
         console.log(`Logged in as ${client.user.tag}`);
         client.user.setActivity("HOH ENDGEGNER VON LNV", {
-            type: ActivityType.Streaming,
+            type: ActivityType.Watching,
         });
     }
 };
